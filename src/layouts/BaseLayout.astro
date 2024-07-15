@@ -2,6 +2,7 @@
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 import Header from "../components/Header.astro";
+import { ViewTransitions } from "astro:transitions";
 const { pageTitle } = Astro.props;
 ---
 
@@ -12,11 +13,14 @@ const { pageTitle } = Astro.props;
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>Ine Lofthus Arnesen</title>
+        <ViewTransitions />
     </head>
     <body>
         <Header />
-        <h1>{pageTitle}</h1>
-        <slot />
+        <div class="content">
+            <h1 transition:animate="slide">{pageTitle}</h1>
+            <slot />
+        </div>
         <Footer />
         <script>
             import "../scripts/menu.js";
