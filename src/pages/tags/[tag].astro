@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogTag from "../../components/blog/BlogTag.astro";
+
+export async function getStaticPaths() {
+    const allPosts = await Astro.glob("../posts/*.md");
+    const uniqueTags = [
+        ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
+    ];
+
+    return uniqueTags.map((tag) => {
+        const filteredPosts = allPosts.filter((post) =>
+            post.frontmatter.tags.includes(tag),
+        );
+        return {
+            params: { tag },
+            props: { posts: filteredPosts, tags: uniqueTags },
+        };
+    });
+}
+
+const { tag } = Astro.params;
+const { posts, tags } = Astro.props;
+const filteredPosts = posts.filter((post) =>
+    post.frontmatter.tags?.includes(tag),
+);
+---
+
+<BaseLayout pageTitle={tag}>
+    <p>Bloggposter som inneholder taggen <i>{tag}</i></p>
+    <ul>
+        {
+            filteredPosts.map((post) => (
+                <li>
+                    <a href={post.url}>{post.frontmatter.title}</a>
+                </li>
+            ))
+        }
+    </ul>
+    <p>Flere tags</p>
+    <div class="tag-container">{tags.map((tag) => <BlogTag tag={tag} />)}</div>
+    <style>
+        .tag-container {
+            gap: 0.2rem;
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</BaseLayout>

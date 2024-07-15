@@ -1,12 +1,17 @@
 ---
-import "../styles/global.css";
+import BlogPost from "../components/blog/BlogPost.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-const pageTitle = "Blogg"
+const allPosts = await Astro.glob("./posts/*.md");
+const pageTitle = "Blogg";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
 	<h2>Bloggposter</h2>
 	<ul>
-		<li><a href="/posts/multiple-git-emails/">Post 1</a></li>
+		{
+			allPosts.map((post) => (
+				<BlogPost url={post.url} title={post.frontmatter.title} />
+			))
+		}
 	</ul>
 </BaseLayout>

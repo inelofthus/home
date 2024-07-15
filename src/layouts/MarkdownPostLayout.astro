@@ -1,4 +1,5 @@
 ---
+import BlogTag from "../components/blog/BlogTag.astro";
 import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter } = Astro.props;
@@ -8,5 +9,15 @@ const { frontmatter } = Astro.props;
     <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
     <p><em>{frontmatter.description}</em></p>
     <p>Skrevet av {frontmatter.author}</p>
+    <div class="tags">
+        {frontmatter.tags.map((tag) => <BlogTag tag={tag} />)}
+    </div>
     <slot />
+    <style>
+        .tags {
+            gap: 0.2rem;
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
 </BaseLayout>
