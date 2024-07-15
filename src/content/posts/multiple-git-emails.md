@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "Flere gitbrukere"
 pubDate: 2024-07-14
 description: "Hvordan sette opp ssh og git config med flere eposter på samme maskin"

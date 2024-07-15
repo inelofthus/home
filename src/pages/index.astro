@@ -1,8 +1,11 @@
 ---
 import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
-const pageTitle = "Index"
+import Greeting from "../components/Greeting";
+const pageTitle = "Index";
 ---
+
 <BaseLayout pageTitle={pageTitle}>
 	<h2>Index</h2>
+	<Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
 </BaseLayout>
