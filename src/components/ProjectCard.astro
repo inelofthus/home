@@ -1,0 +1,62 @@
+---
+import Image from "astro/components/Image.astro";
+const { name, description, imageMetadata, stack, darkmodeFilter, date } =
+    Astro.props;
+---
+
+<div class="cards">
+    <div class="card front">
+        <Image class="image" width={100} src={imageMetadata} alt="Nav-logo" />
+        <div class="right-front">
+            <p>{description}</p>
+            <p class="date">{date}</p>
+        </div>
+    </div>
+    <div class="card back hide">
+        <ul>{stack.map((e) => <li>{e}</li>)}</ul>
+    </div>
+</div>
+<style define:vars={{ darkmodeFilter: darkmodeFilter }}>
+    .card {
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        opacity: 0.8;
+        cursor: pointer;
+        font-family: "Poppins", "Roboto", sans-serif;
+    }
+    .image {
+        display: inline;
+        filter: opacity(0.6);
+    }
+    .card:hover {
+        opacity: 1;
+        .image {
+            filter: opacity(1);
+        }
+    }
+    .hide {
+        display: none !important;
+        transition: margin-right 4s;
+    }
+    .right-front {
+        text-align: center;
+        p {
+            margin: 0;
+        }
+        .date {
+            font-size: 0.8rem;
+        }
+    }
+    html.dark {
+        .image {
+            filter: var(--darkmodeFilter, opacity(0.6)) opacity(0.6);
+        }
+        .card:hover {
+            .image {
+                filter: var(--darkmodeFilter) opacity(1);
+            }
+        }
+    }
+</style>

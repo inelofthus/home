@@ -1,11 +1,54 @@
 ---
-import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Greeting from "../components/Greeting";
-const pageTitle = "Index";
+import { slide } from "astro:transitions";
+import NavCard from "../components/project-cards/NavCard.astro";
+import BasalCard from "../components/project-cards/BasalCard.astro";
+import StatnettCard from "../components/project-cards/StatnettCard.astro";
+import SparkelCard from "../components/project-cards/SparkelCard.astro";
+const pageTitle = "Prosjekter";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	<h2>Index</h2>
+	<div class="projects">
+		<div
+			transition:animate={slide({
+				duration: "0.25s",
+			})}
+		>
+			<NavCard />
+		</div>
+		<div
+			transition:animate={slide({
+				duration: "0.5s",
+			})}
+		>
+			<BasalCard />
+		</div>
+		<div
+			transition:animate={slide({
+				duration: "0.75s",
+			})}
+		>
+			<SparkelCard />
+		</div>
+		<div
+			transition:animate={slide({
+				duration: "1s",
+			})}
+		>
+			<StatnettCard />
+		</div>
+	</div>
 	<Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
 </BaseLayout>
+<style>
+	.projects {
+		gap: 1rem;
+		display: flex;
+		flex-wrap: wrap;
+	}
+</style>
+<script>
+	import "../scripts/cardFlip.js";
+</script>
