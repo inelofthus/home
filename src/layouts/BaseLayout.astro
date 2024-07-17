@@ -23,7 +23,7 @@ const { pageTitle } = Astro.props;
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>Ine Lofthus Arnesen</title>
-        <ViewTransitions />
+        <ViewTransitions fallback="swap" />
     </head>
     <body>
         <Header />
