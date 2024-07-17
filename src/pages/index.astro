@@ -41,13 +41,18 @@ const pageTitle = "Prosjekter";
 			<StatnettCard />
 		</div>
 	</div>
- 	<!--<Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> -->
+	<!--<Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> -->
 </BaseLayout>
 <style>
 	.projects {
 		gap: 1rem;
 		display: flex;
 		flex-wrap: wrap;
+	}
+	@media screen and (max-width: 635px) {
+		div {
+			width: 100%;
+		}
 	}
 </style>
 <script>
