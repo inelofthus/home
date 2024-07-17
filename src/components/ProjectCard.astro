@@ -25,20 +25,29 @@ const { name, description, imageMetadata, stack, darkmodeFilter, date } =
         opacity: 0.8;
         cursor: pointer;
         font-family: "Poppins", "Roboto", sans-serif;
+        min-width: 20rem;
+        min-height: 10rem;
+        border-radius: 0.5rem;
+        background-image: linear-gradient(
+            to bottom left,
+            rgba(255, 255, 255, 0.1),
+            rgb(0, 0, 0, 0.1)
+        );
+        box-shadow: -1px 1px 5px rgb(0, 0, 0, 0.5);
+
+        &:hover {
+            opacity: 1;
+            .image {
+                filter: opacity(1);
+            }
+        }
     }
     .image {
         display: inline;
         filter: opacity(0.6);
     }
-    .card:hover {
-        opacity: 1;
-        .image {
-            filter: opacity(1);
-        }
-    }
     .hide {
-        display: none !important;
-        transition: margin-right 4s;
+        display: none;
     }
     .right-front {
         text-align: center;
@@ -53,9 +62,12 @@ const { name, description, imageMetadata, stack, darkmodeFilter, date } =
         .image {
             filter: var(--darkmodeFilter, opacity(0.6)) opacity(0.6);
         }
-        .card:hover {
-            .image {
-                filter: var(--darkmodeFilter) opacity(1);
+        .card {
+            color: #fbe0c3;
+            &:hover {
+                .image {
+                    filter: var(--darkmodeFilter, opacity(1)) opacity(1);
+                }
             }
         }
     }

@@ -1,6 +1,40 @@
 ---
-const {url, title} = Astro.props
+const { url, title, date } = Astro.props;
 ---
-<li>
+
+<div>
     <a href={url}>{title}</a>
-</li>
+    <span class="date">{date.toLocaleDateString('nb-NO')}</span>
+</div>
+<style>
+    div {
+        padding: 1rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.8;
+        font-family: "Poppins", "Roboto", sans-serif;
+        min-width: 20rem;
+        min-height: 10rem;
+        border-radius: 0.5rem;
+        background-image: linear-gradient(
+            to bottom left,
+            rgba(255, 255, 255, 0.1),
+            rgb(0, 0, 0, 0.1)
+        );
+        box-shadow: -1px 1px 5px rgb(0, 0, 0, 0.5);
+        gap: 0.5rem;
+
+        &:hover {
+            opacity: 1;
+            .image {
+                filter: opacity(1);
+            }
+        }
+
+        .date {
+            font-size: 0.8rem;
+        }
+    }
+</style>

@@ -1,59 +1,14 @@
 ---
 import "../styles/global.scss";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import LinkedinSocial from "../components/social/LinkedinSocial.astro";
+import GithubSocial from "../components/social/GithubSocial.astro";
 
 const pageTitle = "Om meg";
-const identity = {
-    firstName: "Ine",
-    country: "Norge",
-    occupation: "fullstack-utvikler",
-    hobbies: ["klatring", "løping", "matlaging"],
-};
-
-const skills = ["HTML", "CSS", "JavaScript", "React", "Astro"];
-
-const happy = true;
-const finished = false;
-const goal = 3;
-
-const skillColor = "navy";
-const fontWeight = "bold";
-const textCase = "uppercase";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
     <h2>Ine Lofthus Arnesen</h2>
-    <p>Litt om meg:</p>
-    <ul>
-        <li>Mitt navn er {identity.firstName}</li>
-        <li>
-            Jeg bor i {identity.country} og jobber som {identity.occupation}
-        </li>
-        <li>
-            To av mine hobbier er {identity.hobbies[0]} og {identity.hobbies[1]}
-        </li>
-    </ul>
-    <p>Jeg har ferdigheter innen:</p>
-    <ul>
-        {skills.map((skill) => <li class="skill">{skill}</li>)}
-    </ul>
-
-    {happy && <p>I am happy to be learning Astro!</p>}
-
-    {finished && <p>I finished this tutorial!</p>}
-
-    {
-        goal === 3 ? (
-            <p>My goal is to finish in 3 days.</p>
-        ) : (
-            <p>My goal is not 3 days.</p>
-        )
-    }
-    <style define:vars={{ skillColor, fontWeight, textCase }}>
-        .skill {
-            color: var(--skillColor);
-            font-weight: var(--fontWeight);
-            text-transform: var(--textCase);
-        }
-    </style>
+    <div><LinkedinSocial/></div>
+    <div><GithubSocial/></div>
 </BaseLayout>

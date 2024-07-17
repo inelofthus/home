@@ -2,18 +2,34 @@
 import { getCollection } from "astro:content";
 import BlogPost from "../components/blog/BlogPost.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { slide } from "astro:transitions";
 
 const allPosts = await getCollection("posts");
 const pageTitle = "Blogg";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	<h2>Bloggposter</h2>
-	<ul>
+	<div>
 		{
-			allPosts.map((post) => (
-				<BlogPost url={`/posts/${post.slug}`} title={post.data.title} />
+			allPosts.map((post, index) => (
+				<div
+					transition:animate={slide({
+						duration: `${0.25 + index / 2}s`,
+					})}
+				>
+					<BlogPost
+						url={`/posts/${post.slug}`}
+						title={post.data.title}
+						date={post.data.pubDate}
+					/>
+				</div>
 			))
 		}
-	</ul>
+	</div>
 </BaseLayout>
+<style>
+	div {
+		display: flex;
+		flex-wrap: wrap;
+	}
+</style>

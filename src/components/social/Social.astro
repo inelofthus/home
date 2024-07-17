@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+
+const { platform, username, imageMetadata, filter, darkmodeFilter } = Astro.props;
+---
+
+<a href={`https://www.${platform}.com/${username}`}
+    ><div>
+        {platform}{
+            imageMetadata && (
+                <Image class="image" src={imageMetadata} alt={platform} />
+            )
+        }
+    </div></a
+>
+<style define:vars={{filter: filter, darkmodeFilter: darkmodeFilter}}>
+    a {
+        display: inline-block;
+    }
+    div {
+        display: flex;
+        align-items: center;
+        gap: 0.2em;
+    }
+    .image {
+        width: 1em;
+        height: 1em;
+        filter: var(--filter);
+    }
+    html.dark {
+        .image {
+            filter: var(--darkmodeFilter);
+        }
+    }
+</style>

@@ -10,6 +10,7 @@ const pageTitle = "Prosjekter";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
+	<h2>Konsulent</h2>
 	<div class="projects">
 		<div
 			transition:animate={slide({
@@ -40,7 +41,7 @@ const pageTitle = "Prosjekter";
 			<StatnettCard />
 		</div>
 	</div>
-	<Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+ 	<!--<Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> -->
 </BaseLayout>
 <style>
 	.projects {

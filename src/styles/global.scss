@@ -59,27 +59,6 @@ html.dark {
     color: #fff;
 }
 
-.card {
-    min-width: 20rem;
-    min-height: 10rem;
-    border-radius: 0.5rem;
-    padding: 0.3rem 0.8rem;
-    background-image: linear-gradient(to bottom left,
-            rgba(255, 255, 255, 0.1),
-            rgb(0, 0, 0, 0.1));
-    box-shadow: -1px 1px 5px rgb(0, 0, 0, 0.5);
-    color: black;
-    text-decoration: none;
-
-    &:hover {
-        opacity: 1;
-    }
-}
-
-.dark .card {
-    color: #fbe0c3;
-}
-
 /* nav styles */
 .hamburger {
     padding-right: 20px;

@@ -1,0 +1,13 @@
+---
+import githubLogo from "../../assets/logos/github.svg";
+import Social from "./Social.astro";
+const { invert } = Astro.props;
+---
+
+<Social
+    platform="github"
+    username="inelofthus"
+    imageMetadata={githubLogo}
+    filter={invert && "invert(1)"}
+    darkmodeFilter="invert(1)"
+/>
