@@ -59,14 +59,16 @@ const { name, description, imageMetadata, stack, darkmodeFilter, date } =
         }
     }
     html.dark {
-        .image {
-            filter: var(--darkmodeFilter, opacity(0.6)) opacity(0.6);
-        }
-        .card {
-            color: #fbe0c3;
-            &:hover {
-                .image {
-                    filter: var(--darkmodeFilter, opacity(1)) opacity(1);
+        .cards {
+            .image {
+                filter: var(--darkmodeFilter, opacity(0.6)) opacity(0.6);
+            }
+            .card {
+                color: #fbe0c3;
+                &:hover {
+                    .image {
+                        filter: var(--darkmodeFilter, opacity(1)) opacity(1);
+                    }
                 }
             }
         }
